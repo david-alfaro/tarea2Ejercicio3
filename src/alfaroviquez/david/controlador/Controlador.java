@@ -9,10 +9,23 @@ import alfaroviquez.david.iu.IU;
 
 import java.time.LocalDate;
 
+/**
+ * Clase controlador
+ * Para tomar los valores del usuario y enviarlos al gestor para crear las instancias de cada clase
+ *
+ * @author David Alfaro Viquez
+ * @version 1.0
+ * @since 23/10/2020
+ */
 public class Controlador {
     Gestor gestor = new Gestor();
     IU iu = new IU();
 
+    /**
+     * Metodo para ejecutar el programa
+     * Muestra el menu en pantalla
+     * Procesa la opcion ingresada por el usuario
+     */
     public void ejecutarPrograma() {
         int opcion = 0;
         do {
@@ -22,6 +35,12 @@ public class Controlador {
         } while (opcion != 7);
     }
 
+    /**
+     * Esta funcion procesa la opcion escogida por el usuario
+     * Dependdiendo de la opcion escogida se ejecuta una determinada funcion
+     *
+     * @param opcion ingresada por el usurio, es un numero entero
+     */
     private void procesarOpcion(int opcion) {
         switch (opcion) {
             case 1:
@@ -49,7 +68,9 @@ public class Controlador {
         }
     }
 
-
+    /**
+     * Metodo para registrar clientes
+     */
     private void registrarCliente() {
         iu.imprimirMensaje("Registrar cliente--->");
         iu.imprimirMensaje("Nombre del cliente: ");
@@ -64,6 +85,9 @@ public class Controlador {
         iu.imprimirMensaje("Cliente registrado con exito");
     }
 
+    /**
+     * Metodo para listar clientes
+     */
     private void listarClientes() {
         for (Cliente cliente : gestor.listarClientes()
         ) {
@@ -71,6 +95,9 @@ public class Controlador {
         }
     }
 
+    /**
+     * Metodo para registrar productos
+     */
     private void registrarProducto() {
         iu.imprimirMensaje("Registrar producto nuevo--->");
         iu.imprimirMensaje("Codigo del producto: ");
@@ -83,6 +110,9 @@ public class Controlador {
         iu.imprimirMensaje("Producto registrado con exito");
     }
 
+    /**
+     * metodo para listar productos
+     */
     private void listarProductos() {
         for (Producto producto : gestor.listarProductos()
         ) {
@@ -90,6 +120,9 @@ public class Controlador {
         }
     }
 
+    /**
+     * Metodo para crear una nueva factura
+     */
     private void registrarFactura() {
         iu.imprimirMensaje("Registrar factura--->");
         iu.imprimirMensaje("Numero de identificacion del cliente: ");
@@ -118,6 +151,10 @@ public class Controlador {
         iu.imprimirMensaje("Factura creada");
 
     }
+
+    /**
+     * Metodo para imprimir una factura en consola
+     */
 
     private void imprimirFactura() {
         for (Factura fac : gestor.listarFacturas()

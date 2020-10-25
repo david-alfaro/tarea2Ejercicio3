@@ -3,6 +3,14 @@ package alfaroviquez.david.bl.entidades;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Clase Factura
+ * Crear instancias de la clase Factura
+ *
+ * @author David Alfaro Viquez
+ * @version 1.0
+ * @since 23/10/2020
+ */
 public class Factura {
     private static int contador;
     private int numero;
@@ -46,6 +54,13 @@ public class Factura {
         contador++;
     }
 
+    /**
+     * Constructor de la clase Factura
+     *
+     * @param cliente cliente de la actura, instancia de la clase Cliente
+     * @param fecha en la que se emite la  factura
+     * @param lineasDetalle las lineas de detalle de la factura
+     */
     public Factura(Cliente cliente, LocalDate fecha, ArrayList<Linea> lineasDetalle) {
         this.numero = contador;
         this.cliente = cliente;
@@ -53,6 +68,13 @@ public class Factura {
         this.lineasDetalle = lineasDetalle;
     }
 
+    /**
+     * Funcion para calcular el subtotal de la factura, el monto antes de los intereses
+     * Un metodo de la clase Linea es calcularCosto, este metodo se usa para calcular el costo de una linea
+     * En esta funcion se invoca este metodo y se realiza la suma de los costos de todas las lineas
+     *
+     * @return el subtotal de la factura
+     */
     private float calcularSubTotal() {
         Linea lineaDetalle;
         float subtotal;
@@ -64,12 +86,23 @@ public class Factura {
         return subtotal;
     }
 
+    /**
+     * Funcion para calcular el impuesto de una factura
+     * Toma el subtotal y lo multiplica por el impuesto de 13%
+     * @return el valor del imouesto, float
+     */
     private float calcularImpuesto() {
         float impuesto;
         impuesto = (float) (calcularSubTotal() * 0.13);
         return impuesto;
     }
 
+    /**
+     * Funcion para cacular el total de una fatura
+     * Esto se calcula sumando el subtotal con el impuesto
+     *
+     * @return el monto total del impuesto dato de tipo float
+     */
     private float calcularTotal() {
         float total;
         total = calcularSubTotal() + calcularImpuesto();
